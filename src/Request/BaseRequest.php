@@ -19,7 +19,7 @@ abstract class BaseRequest
      *
      * @var array
      */
-    protected $config;
+    public $config;
 
     /**
      * BaseRequest constructor.
