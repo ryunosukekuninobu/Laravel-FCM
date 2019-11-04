@@ -93,10 +93,11 @@ class FCMSender extends HTTPSender
      *
      * @return TopicResponse
      */
-    public function sendToTopic(Topics $topics, Options $options = null, PayloadNotification $notification = null, PayloadData $data = null)
+    public function sendToTopic(Topics $topics, Options $options = null, PayloadNotification $notification = null, PayloadData $data = null,$server_key = null,$sender_key = null)
     {
         $request = new Request(null, $options, $notification, $data, $topics);
-
+        $request->config['server_key'] = $server_key;
+        $request->config['sender_id'] = $sender_key;
         $responseGuzzle = $this->post($request);
 
         return new TopicResponse($responseGuzzle, $topics);
